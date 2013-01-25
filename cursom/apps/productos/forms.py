@@ -2,7 +2,7 @@
 from django import forms
 from cursom.apps.productos.models import Categoria
 
-choicess = [(categoria.id, categoria.nombre) for categoria in Categoria.objects.all()]
+choicess = ((categoria.id, categoria.nombre) for categoria in Categoria.objects.all())
 
 class AgregarForm(forms.Form):
 	nombre = forms.CharField(widget = forms.TextInput(), required=True)

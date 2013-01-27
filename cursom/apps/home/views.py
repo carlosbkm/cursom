@@ -21,7 +21,7 @@ def agregar(request):
 		if form.is_valid():
 			nombre = form.cleaned_data['nombre']
 			descripcion = form.cleaned_data['descripcion']
-			categoria = form.cleaned_data['categoria']
+			categoria = form.cleaned_data['categoria'].id
 
 			p = Producto()
 			p.nombre = nombre

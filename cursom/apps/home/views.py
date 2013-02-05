@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from cursom.apps.productos.models import Producto
 from django.contrib.auth.decorators import login_required
-from cursom.apps.productos.forms import AgregarForm
+from cursom.apps.productos.forms import AgregarForm, ActualizarForm
 from django.http import HttpResponseRedirect
 
 def index(request):
@@ -35,3 +35,18 @@ def agregar(request):
 			
 
 	return render_to_response('home/agregar.html', ctx ,context_instance = RequestContext(request))
+
+@login_required
+def actualizar(request, id_p):
+	dato = get_object_or_404(Producto, id=id_p)
+	p = Producto.objects.get(id=id_p)
+	form = ActualizarForm(instance=p)
+	if request.method == "POST":
+		#Aquí decimos a Django que estamos actualizando y no insertando
+		form = ActualizarForm(request.POST, instance=p)
+		if form.is_valid():
+			form.save()
+			return HttpResponseRedirect('/')
+
+	ctx = {'form':form}
+	return render_to_response('home/actualizar.html', ctx, context_instance = RequestContext(request))

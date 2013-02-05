@@ -14,4 +14,4 @@ class ActualizarForm(ModelForm):
 		model = Producto
 		#Campos que se mostraran
 		fields = ('nombre','categoria','descripcion',)
-		# exclude = ('usuario', 'disponible',) <- Datos que se escluiran. Sirve de la misma manera las 2 formas
+		# exclude = ('usuario', 'disponible',) <- Datos que se excluirán. Sirve de la misma manera las dos formas

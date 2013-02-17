@@ -14,7 +14,7 @@ def index(request):
 @login_required
 def agregar(request):
 	form = AgregarForm
-	ctx = {'form':form}
+	
 
 	if request.method == "POST":
 		form = AgregarForm(request.POST)
@@ -33,7 +33,7 @@ def agregar(request):
 
 
 			
-
+	ctx = {'form':form}
 	return render_to_response('home/agregar.html', ctx ,context_instance = RequestContext(request))
 
 @login_required

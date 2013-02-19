@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 from django import forms
 from django.forms import ModelForm
-from cursom.apps.productos.models import Categoria
-from cursom.apps.productos.models import Producto
+from cursom.apps.productos.models import Categoria, Producto
 
 class AgregarForm(forms.Form):
 	nombre = forms.CharField(widget = forms.TextInput(), required=True)
